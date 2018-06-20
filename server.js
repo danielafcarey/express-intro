@@ -9,8 +9,13 @@ app.listen(3000, () => {
 
 app.get('/', (request, response) => {});
 
-app.get('/json', (request, response) => {
+const urlLogger = (request, response, next) => {
+  console.log('Request URL:', request.url);
+  next();
+};
+
+app.get('/json', urlLogger, (request, response) => {
   response.status(200).json({ 'name': 'Daniela' })
-})
+});
 
 
