@@ -26,6 +26,10 @@ app.get('/json', (request, response) => {
   response.status(200).json(mockData)
 });
 
+app.get('/sunsets', (request, response) => {
+  response.redirect('https://www.pexels.com/search/sunset/')
+})
+
 app.listen(3000, () => {
   console.log('Express intro running on localhost:3000');
 });
