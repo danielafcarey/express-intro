@@ -17,7 +17,7 @@ const errorLogger = (request, response, next) => {
   response.status(404).send('Womp womp! It broke!');
 };
 
-app.use(urlLogger, timeLogger, errorLogger);
+app.use(urlLogger, timeLogger);
 app.use(express.static('public'));
 
 app.get('/', (request, response) => {});
@@ -29,5 +29,7 @@ app.get('/json', (request, response) => {
 app.listen(3000, () => {
   console.log('Express intro running on localhost:3000');
 });
+
+app.use(errorLogger);
 
 
