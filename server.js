@@ -11,9 +11,13 @@ const urlLogger = (request, response, next) => {
 const timeLogger = (request, response, next) => {
   console.log('Datetime:', new Date(Date.now()).toString());
   next();
-}
+};
 
-app.use(urlLogger, timeLogger);
+const errorLogger = (request, response, next) => {
+  response.status(404).send('Womp womp! It broke!');
+};
+
+app.use(urlLogger, timeLogger, errorLogger);
 app.use(express.static('public'));
 
 app.get('/', (request, response) => {});
