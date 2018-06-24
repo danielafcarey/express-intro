@@ -27,7 +27,7 @@ app.get('/json', (request, response) => {
 });
 
 app.get('/sunsets', (request, response) => {
-  response.redirect('https://www.pexels.com/search/sunset/')
+  response.sendFile('sunsets.html', {'root': './public'})
 })
 
 app.listen(3000, () => {
